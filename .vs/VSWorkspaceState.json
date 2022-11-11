@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\API",
+    "\\backend\\API\\Controllers",
+    "\\backend\\API\\Interfaces",
+    "\\backend\\API\\Models",
+    "\\backend\\API\\Properties",
+    "\\backend\\API\\Services",
+    "\\frontend"
+  ],
+  "SelectedNode": "\\backend\\backend.sln",
+  "PreviewInSolutionExplorer": false
+}
