@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\istep\\Documents\\projects\\lab\\backend\\API\\API.csproj": {}
+    "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\istep\\Documents\\projects\\lab\\backend\\API\\API.csproj": {
+    "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\istep\\Documents\\projects\\lab\\backend\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\istep\\Documents\\projects\\lab\\backend\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\istep\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\istep\\Documents\\projects\\lab\\backend\\API\\obj\\",
+        "projectPath": "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\vladd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\istep\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vladd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
