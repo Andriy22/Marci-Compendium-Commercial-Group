@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   baseUrl: '',
   useHash: false,
+  apiURL: 'https://dev.wot-stats.fun/api',
 };
 
 /*

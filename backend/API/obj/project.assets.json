@@ -320,19 +320,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vladd\\.nuget\\packages\\": {}
+    "C:\\Users\\istep\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\istep\\Documents\\projects\\lab\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\vladd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vladd\\source\\repos\\Andriy22\\Marci-Compendium-Commercial-Group\\backend\\API\\obj\\",
+      "projectPath": "C:\\Users\\istep\\Documents\\projects\\lab\\Marci-Compendium-Commercial-Group\\backend\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\istep\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\istep\\Documents\\projects\\lab\\Marci-Compendium-Commercial-Group\\backend\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vladd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\istep\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

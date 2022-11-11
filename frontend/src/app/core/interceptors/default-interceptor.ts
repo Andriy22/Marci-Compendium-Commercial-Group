@@ -7,7 +7,6 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -20,7 +19,8 @@ export class DefaultInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    return next.handle(req).pipe(mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)));
+    return next.handle(req);
+    // return next.handle(req).pipe(mergeMap((event: HttpEvent<any>) => this.handleOkReq(event)));
   }
 
   private handleOkReq(event: HttpEvent<any>): Observable<any> {
