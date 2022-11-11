@@ -13,10 +13,15 @@ namespace API.Services
     {
         public Currency GetCurrencyByCC(string cc)
         {
+            if (BlackList.Curencies.Contains(cc.ToUpper())) 
+            {
+                throw new System.Exception(cc + " currency is blacklisted!");
+            }
+
             var currency = GetCurrencyList().FirstOrDefault(x => x.ShortCurrencyName.ToLower() == cc.ToLower());
             if(currency == null)
             {
-                throw new System.NotImplementedException();
+                throw new System.Exception(cc + " currency not found!");
             }
 
             return currency;
