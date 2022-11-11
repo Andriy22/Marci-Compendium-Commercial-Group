@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\API",
+    "\\backend\\API\\Controllers",
+    "\\backend\\API\\Interfaces",
+    "\\backend\\API\\Properties",
+    "\\frontend"
+  ],
+  "SelectedNode": "\\backend\\API\\Controllers\\CurrencyController.cs",
+  "PreviewInSolutionExplorer": false
+}

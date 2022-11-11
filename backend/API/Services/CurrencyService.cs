@@ -1,18 +1,34 @@
-﻿using API.Interfaces;
+﻿using API.Helpers;
+using API.Interfaces;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System.Collections.Generic;
+
 
 namespace API.Services
 {
     public class CurrencyService : ICurrencyService
     {
-        public List<string> GetCurrencyList()
+
+        public List<Currency> GetCurrencyList()
         {
-            var result = new List<string>();
 
-            // make request to bank and get currency list
+            var request = new RestRequest("NBUStatService/v1/statdirectory/exchange?date=20200302&json");
 
-            // ya eblan (
-            result.Add("USD");
+            var result = new List<Currency>();
+
+            var response = HttpFactory.GetPrivateApi().Get(request);
+
+            var CurrencyList = (JArray.Parse(response.Content));
+
+            foreach (var item in CurrencyList)
+            {
+                var Currency = item.ToObject<Currency>();
+
+
+                result.Add(Currency);
+
+            }
 
             return result;
         }

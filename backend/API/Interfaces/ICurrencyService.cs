@@ -4,6 +4,6 @@ namespace API.Interfaces
 {
     public interface ICurrencyService
     {
-        public List<string> GetCurrencyList();
+        public List<Currency> GetCurrencyList();
     }
 }
