@@ -5,20 +5,22 @@ import { ConverterService } from '@shared/services/api/converter.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
+  selectedItemFrom = 'USD'
+  selectedAmountFrom: number = 0
+
+  selectedItemTo = 'USD'
+  selectedAmountTo: number = 0
   constructor(
     private cdr: ChangeDetectorRef,
     public currencyService: CurrencyService,
-    private converter: ConverterService
+    public converter: ConverterService
   ) {}
 
   ngOnInit() {
     this.currencyService.UpdateCurrencyList();
-    this.converter.ConvertToUAH('USD', 1000);
-    this.converter.converterToUAHResult.subscribe(data => {
-      console.log(data.data);
-    });
   }
 }

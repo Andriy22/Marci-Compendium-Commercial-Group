@@ -38,7 +38,7 @@ export class ConverterService {
         data => {
           console.log(data);
           this.converterToUAHResult.next({
-            data: data,
+            data: Math.round(data * 100) / 100 ,
             isLoading: false,
             isError: false,
           });
@@ -66,7 +66,7 @@ export class ConverterService {
       .subscribe(
         (data: number) => {
           this.converterFromUAHResult.next({
-            data: data,
+            data: Math.round(data * 100) / 100,
             isLoading: false,
             isError: false,
           });
