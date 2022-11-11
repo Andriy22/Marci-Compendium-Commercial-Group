@@ -18,13 +18,16 @@ namespace API.Services
             _currencyService = currencyService;
         }
 
+        public float ConvertFromUAH(string cc, float amount)
+        {
+            var Currency = _currencyService.GetCurrencyByCC(cc);
+
+            return amount / Currency.Rate;
+        }
+
         public float ConvertToUAH(string cc, float amount)
         {
-            var Currency = _currencyService.GetCurrencyList().FirstOrDefault(x => x.ShortCurrencyName.ToLower() == cc.ToLower());
-            if (Currency == null)
-            {
-                throw new Exception("invalid Currency");
-            }
+            var Currency = _currencyService.GetCurrencyByCC(cc);
 
             return amount * Currency.Rate;
         }
