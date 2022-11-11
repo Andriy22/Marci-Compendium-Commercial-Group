@@ -1,1 +1,10 @@
-<page-header></page-header>
+<!--<page-header></page-header>-->
+
+<ul>
+  <li *ngFor="let item of (currencyService.currencyListResult | async)?.data">
+    {{item.fullCurrencyName}}
+    |
+    {{item.shortCurrencyName}}</li>
+</ul>
+
+<hr/>
