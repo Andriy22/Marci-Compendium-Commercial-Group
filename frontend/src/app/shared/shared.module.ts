@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material.module';
 import { MaterialExtensionsModule } from '../material-extensions.module';
@@ -21,6 +21,7 @@ import { ErrorCodeComponent } from './components/error-code/error-code.component
 import { DisableControlDirective } from './directives/disable-control.directive';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const MODULES: any[] = [
   CommonModule,
@@ -38,6 +39,7 @@ const MODULES: any[] = [
   NgxPermissionsModule,
   ToastrModule,
   TranslateModule,
+  NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
 ];
 const COMPONENTS: any[] = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC: any[] = [];
@@ -48,5 +50,6 @@ const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
   imports: [...MODULES],
   exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

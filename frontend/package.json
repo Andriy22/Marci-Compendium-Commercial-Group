@@ -37,6 +37,7 @@
     "ng-matero": "^14.1.0",
     "ngx-permissions": "^13.0.1",
     "ngx-progressbar": "^9.0.0",
+    "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^15.0.0",
     "photoviewer": "^3.6.5",
     "rxjs": "~7.5.0",

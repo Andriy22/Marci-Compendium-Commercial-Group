@@ -5,6 +5,7 @@ import { CurrencyModel } from '@shared/models/currency.model';
 import { BehaviorSubject } from 'rxjs';
 import { MessageService } from '@shared';
 import { ResultModel } from '@shared/models/result.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,11 @@ import { ResultModel } from '@shared/models/result.model';
 export class CurrencyService {
   public currencyListResult: BehaviorSubject<ResultModel<CurrencyModel[]>>;
 
-  constructor(private http: HttpClient, private messageService: MessageService) {
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService,
+    private spinner: NgxSpinnerService
+  ) {
     this.currencyListResult = new BehaviorSubject<ResultModel<CurrencyModel[]>>({
       isError: false,
       isLoading: false,
@@ -21,6 +26,7 @@ export class CurrencyService {
   }
 
   public UpdateCurrencyList() {
+    this.spinner.show();
     this.currencyListResult.next({
       isError: false,
       isLoading: true,
@@ -29,6 +35,7 @@ export class CurrencyService {
 
     this.http.get<CurrencyModel[]>(environment.apiURL + '/currency/get-currency-list').subscribe(
       (data: CurrencyModel[]) => {
+        this.spinner.hide();
         this.currencyListResult.next({
           isError: false,
           isLoading: false,
