@@ -10,6 +10,17 @@ namespace API.Services
 {
     public class CurrencyService : ICurrencyService
     {
+        public Currency GetCurrencyByCC(string cc)
+        {
+            var currency = GetCurrencyList().FirstOrDefault(x => x.ShortCurrencyName.ToLower() == cc.ToLower());
+            if(currency == null)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            return currency;
+        }
+
         public List<Currency> GetCurrencyList()
         {
             var request = new RestRequest("NBUStatService/v1/statdirectory/exchange?date=20200302&json");
