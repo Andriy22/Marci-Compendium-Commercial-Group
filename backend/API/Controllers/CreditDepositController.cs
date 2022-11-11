@@ -8,11 +8,25 @@ namespace API.Controllers
     [ApiController]
     public class CreditDepositController : ControllerBase
     {
+        private readonly IDepositService depositService;
+        private readonly ICreditService creditService;
 
-        public CreditDepositController()
+        public CreditDepositController(IDepositService depositService, ICreditService creditService)
         {
-
+            this.depositService = depositService;
+            this.creditService = creditService;
         }
 
+        [HttpGet("get-deposit-value/{sum}/{days}")]
+        public IActionResult GetDepositValue (float sum, int days)
+        {
+            return Ok(depositService.Calculate(sum, days));
+        }
+
+        [HttpGet("get-credit-value/{sum}/{month}")]
+        public IActionResult GetCreditValue(float sum, int month)
+        {
+            return Ok(creditService.Calculate(sum, month));
+        }
     }
 }

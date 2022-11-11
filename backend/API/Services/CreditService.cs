@@ -14,7 +14,7 @@ namespace API.Services
 
         public double Calculate(float sum, int creditTerm)
         {
-            return sum * (CreditConsts.Rate + (CreditConsts.Rate / Math.Pow(1 + CreditConsts.Rate, creditTerm) - 1));
+            return sum * (CreditConsts.Rate + (CreditConsts.Rate / (Math.Pow(1 + CreditConsts.Rate, creditTerm) - 1)));
         }
     }
 }

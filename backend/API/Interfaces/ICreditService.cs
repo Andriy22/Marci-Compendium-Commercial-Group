@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Interfaces
 {
-    interface ICreditService
+    public interface ICreditService
     {
         public double Calculate(float sum, int creditTerm);
     }

@@ -3,6 +3,7 @@ using API.Helpers;
 using API.Interfaces;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,7 +24,7 @@ namespace API.Services
 
         public List<Currency> GetCurrencyList()
         {
-            var request = new RestRequest("NBUStatService/v1/statdirectory/exchange?date=20200302&json");
+            var request = new RestRequest($"NBUStatService/v1/statdirectory/exchange?date={DateTime.Now.ToString("yyyyMMdd")}&json");
 
             var result = new List<Currency>();
 
