@@ -1,18 +1,17 @@
-﻿using API.Helpers;
+﻿using API.Consts;
+using API.Helpers;
 using API.Interfaces;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace API.Services
 {
     public class CurrencyService : ICurrencyService
     {
-
         public List<Currency> GetCurrencyList()
         {
-
             var request = new RestRequest("NBUStatService/v1/statdirectory/exchange?date=20200302&json");
 
             var result = new List<Currency>();
@@ -25,9 +24,12 @@ namespace API.Services
             {
                 var Currency = item.ToObject<Currency>();
 
+                if (BlackList.Curencies.Contains(Currency.ShortCurrencyName)) 
+                {
+                    continue; 
+                } 
 
                 result.Add(Currency);
-
             }
 
             return result;
