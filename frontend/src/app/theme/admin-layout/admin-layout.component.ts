@@ -1,11 +1,12 @@
 import {
   Component,
-  OnDestroy,
-  ViewChild,
-  HostBinding,
   ElementRef,
+  HostBinding,
   Inject,
+  OnDestroy,
+  OnInit,
   Optional,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -17,7 +18,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { Directionality } from '@angular/cdk/bidi';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 
-import { SettingsService, AppSettings } from '@core';
+import { AppSettings, AuthService, SettingsService } from '@core';
 import { AppDirectionality } from '@shared';
 
 const MOBILE_MEDIAQUERY = 'screen and (max-width: 599px)';
@@ -30,38 +31,15 @@ const MONITOR_MEDIAQUERY = 'screen and (min-width: 960px)';
   styleUrls: ['./admin-layout.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AdminLayoutComponent implements OnDestroy {
+export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav!: MatSidenav;
   @ViewChild('content', { static: true }) content!: MatSidenavContent;
 
   options = this.settings.getOptions();
 
   private layoutChangesSubscription: Subscription;
-
-  get isOver(): boolean {
-    return this.isMobileScreen;
-  }
-
   private isMobileScreen = false;
-
-  @HostBinding('class.matero-content-width-fix') get contentWidthFix() {
-    return (
-      this.isContentWidthFixed &&
-      this.options.navPos === 'side' &&
-      this.options.sidenavOpened &&
-      !this.isOver
-    );
-  }
-
   private isContentWidthFixed = true;
-
-  @HostBinding('class.matero-sidenav-collapsed-fix') get collapsedWidthFix() {
-    return (
-      this.isCollapsedWidthFixed &&
-      (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
-    );
-  }
-
   private isCollapsedWidthFixed = false;
 
   constructor(
@@ -71,6 +49,7 @@ export class AdminLayoutComponent implements OnDestroy {
     private overlay: OverlayContainer,
     private element: ElementRef,
     private settings: SettingsService,
+    private Auth: AuthService,
     @Optional() @Inject(DOCUMENT) private document: Document,
     @Inject(Directionality) public dir: AppDirectionality
   ) {
@@ -101,6 +80,32 @@ export class AdminLayoutComponent implements OnDestroy {
 
     // Initialize project theme with options
     this.receiveOptions(this.options);
+  }
+
+  get isOver(): boolean {
+    return this.isMobileScreen;
+  }
+
+  @HostBinding('class.matero-content-width-fix') get contentWidthFix() {
+    return (
+      this.isContentWidthFixed &&
+      this.options.navPos === 'side' &&
+      this.options.sidenavOpened &&
+      !this.isOver
+    );
+  }
+
+  @HostBinding('class.matero-sidenav-collapsed-fix') get collapsedWidthFix() {
+    return (
+      this.isCollapsedWidthFixed &&
+      (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
+    );
+  }
+
+  ngOnInit() {
+    this.Auth.login('user', 'password', true)
+      .pipe(filter(authenticated => true))
+      .subscribe();
   }
 
   ngOnDestroy() {

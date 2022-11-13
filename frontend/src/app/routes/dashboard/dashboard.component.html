@@ -1,1 +1,64 @@
-<page-header></page-header>
+ <mat-card [ngClass]="['text-white', 'white']">
+    <mat-card-title class="text-header">Transfer UAH to another currency</mat-card-title>
+    <mat-card-content>
+      <div class="card-wrapper">
+      <mat-form-field class="card-item" appearance="fill">
+        <mat-label>Clearable input</mat-label>
+        <input (change)="converter.ConvertFromUAH(selectedItemFrom, selectedAmountFrom)" matInput type="text" [(ngModel)]="selectedAmountFrom">
+        <button *ngIf="selectedAmountFrom" matSuffix mat-icon-button aria-label="Clear" (click)="selectedAmountFrom = 0 ">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="card-item" appearance="fill">
+        <mat-label>Choose one</mat-label>
+        <mat-select (selectionChange)="converter.ConvertFromUAH(selectedItemFrom, selectedAmountFrom)" [(ngModel)]="selectedItemFrom">
+          <mat-option *ngFor="let item of (currencyService.currencyListResult | async)?.data" [value] = "item.shortCurrencyName" >
+            {{item.fullCurrencyName}}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Choose your currency</mat-hint>
+      </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="waviy" >
+        <span *ngFor="let item of (converter.converterFromUAHResult | async)?.data?.toString()?.split(''); let i = index" [style]="'--i:' + i">{{item + ''}}</span>
+      </div>
+    </mat-card-footer>
+
+  </mat-card>
+
+ <mat-card [ngClass]="['text-white', 'white']">
+   <mat-card-title class="text-header">Transfer another currency  to UAH </mat-card-title>
+   <mat-card-content>
+     <div class="card-wrapper">
+       <mat-form-field class="card-item" appearance="fill">
+         <mat-label>Clearable input</mat-label>
+         <input (change)="converter.ConvertToUAH(selectedItemTo, selectedAmountTo)" matInput type="text" [(ngModel)]="selectedAmountTo">
+         <button *ngIf="selectedAmountTo" matSuffix mat-icon-button aria-label="Clear" (click)="selectedAmountTo = 0 ">
+           <mat-icon>close</mat-icon>
+         </button>
+       </mat-form-field>
+
+       <mat-form-field class="card-item" appearance="fill">
+         <mat-label>Choose one</mat-label>
+         <mat-select (selectionChange)="converter.ConvertToUAH(selectedItemTo, selectedAmountTo)" [(ngModel)]="selectedItemTo">
+           <mat-option *ngFor="let item of (currencyService.currencyListResult | async)?.data" [value] = "item.shortCurrencyName" >
+             {{item.fullCurrencyName}}
+           </mat-option>
+         </mat-select>
+         <mat-hint>Choose your currency</mat-hint>
+       </mat-form-field>
+     </div>
+   </mat-card-content>
+   <mat-card-footer>
+     <div class="waviy" >
+       <span *ngFor="let item of (converter.converterToUAHResult | async)?.data?.toString()?.split(''); let i = index" [style]="'--i:' + i">{{item + ''}}</span>
+     </div>
+   </mat-card-footer>
+
+ </mat-card>
+
+
+
