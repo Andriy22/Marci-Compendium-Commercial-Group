@@ -1,0 +1,29 @@
+<mat-card [ngClass]="['text-white', 'white']">
+  <mat-card-title class="text-header">Transfer UAH to another currency</mat-card-title>
+  <mat-card-content>
+    <div class="card-wrapper">
+      <mat-form-field class="card-item" appearance="fill">
+        <mat-label>Amount of money that you borrow</mat-label>
+        <input (change)="calculateCredit(amountOfMoneyForCredit, quantityOfMonthForCredit)" matInput type="number" [(ngModel)]="amountOfMoneyForCredit">
+        <button *ngIf="amountOfMoneyForCredit" matSuffix mat-icon-button aria-label="Clear" (click)="amountOfMoneyForCredit = 0 ">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="card-item" appearance="fill">
+        <mat-label>Amount of money that you borrow</mat-label>
+        <input (change)="calculateCredit(amountOfMoneyForCredit, quantityOfMonthForCredit)" matInput type="number" [(ngModel)]="quantityOfMonthForCredit">
+        <button *ngIf="quantityOfMonthForCredit" matSuffix mat-icon-button aria-label="Clear" (click)="quantityOfMonthForCredit = 1 ">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <div class="waviy" >
+      <span *ngFor="let item of (creditDepositService.creditValueResult | async)?.data?.toString()?.split(''); let i = index" [style]="'--i:' + i">{{item + ''}}</span>
+    </div>
+  </mat-card-footer>
+
+</mat-card>
+
