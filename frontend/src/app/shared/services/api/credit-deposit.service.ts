@@ -37,7 +37,7 @@ export class CreditDepositService {
       .subscribe(
         (data: number) => {
           this.depositValueResult.next({
-            data: data,
+            data: Math.round(data * 100) / 100,
             isLoading: false,
             isError: false,
           });
@@ -64,7 +64,7 @@ export class CreditDepositService {
       .subscribe(
         (data: number) => {
           this.creditValueResult.next({
-            data: data,
+            data: Math.round(data * 100) / 100,
             isLoading: false,
             isError: false,
           });
